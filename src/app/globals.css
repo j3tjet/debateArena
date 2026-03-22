@@ -1,8 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #eff4ff;
+  --foreground: #0d1b5e;
+  --arena-blue: #1292ea;
+  --arena-cyan: #55d3ff;
+  --arena-indigo: #2d4bdb;
+  --arena-violet: #7f2dff;
+  --arena-deep: #100b43;
+  --arena-soft: #eef3ff;
 }
 
 @theme inline {
@@ -12,15 +18,63 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at top, rgba(85, 211, 255, 0.25), transparent 30%),
+    radial-gradient(circle at 80% 20%, rgba(127, 45, 255, 0.18), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(239, 244, 255, 0.96));
+  z-index: -1;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(127, 45, 255, 0.25);
+  color: #0d1b5e;
+}
+
+.arena-panel {
+  border: 1px solid rgba(84, 116, 255, 0.14);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(238, 243, 255, 0.82));
+  box-shadow: 0 28px 100px rgba(32, 49, 141, 0.12);
+  backdrop-filter: blur(20px);
+}
+
+.arena-wordmark {
+  background-image: linear-gradient(180deg, #24b4ff 0%, #1848b7 55%, #0d1b5e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.arena-submark {
+  background-image: linear-gradient(90deg, #5d19d8 0%, #8c35ff 48%, #3846dc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
